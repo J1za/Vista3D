@@ -1,4 +1,4 @@
-import 'src/assets/styles/globals.css'
+import 'src/assets/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
