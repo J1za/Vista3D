@@ -13,7 +13,7 @@ const LoaderModel = () => {
 
 const Scene = ({ model = 'Pia_fit_avg.glb' }) => {
     const { scene } = useGLTF(model)
-    return <primitive position={[0, -1.5, 0]} object={scene} scale={0.017} />;
+    return <primitive castShadow position={[0, -1.5, 0]} object={scene} scale={0.017} />;
 };
 
 export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
@@ -22,9 +22,20 @@ export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
         <div className='border-default'>
             <Canvas shadows camera={{ position: [0, 0, 10], fov: 20 }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <Suspense fallback={<LoaderModel />}>
-                    <color attach="background" args={['#c0c0c0']} />
+                    <color attach="background" args={['#0096FF']} />
                     <ambientLight />
-                    <pointLight position={[-10, -10, 0]} castShadow />
+                    <pointLight position={[-10, -10, 0]} intesity={2} />
+                    <group>
+                        <mesh
+                            receiveShadow
+                            rotation={[-Math.PI / 2, 0, 0]}
+                            position={[0, -1.5, 0]}
+
+                        >
+                            <circleGeometry attach='geometry' args={[15, 15]} />
+                            <meshBasicMaterial attach="material" color="orange" />
+                        </mesh>
+                    </group>
                     <Scene model={model} />
                     <spotLight
                         castShadow
@@ -32,7 +43,7 @@ export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
                         args={["blue", 1, 100]}
                         position={[-1, 1, 1]}
                     />
-                    <OrbitControls enablePan={false} enableZoom={true} maxDistance={15} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} autoRotate={hovered ? false : true} autoRotateSpeed={3} />
+                    <OrbitControls enablePan={false} enableZoom={true} maxDistance={15} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} autoRotate={hovered ? false :true} autoRotateSpeed={3} />
                 </Suspense>
             </Canvas>
         </div>
