@@ -1,0 +1,13 @@
+.logo{
+    display: flex;
+    grid-gap: 0 50px;
+    align-items: center;
+    svg{
+        width: 100px;
+        height: 100%;
+    }
+    p{
+        text-transform: uppercase;
+        font-size: 60px;
+    }
+}
