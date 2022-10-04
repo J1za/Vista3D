@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, OrbitControls, Html, useProgress } from "@react-three/drei";
 import { Suspense, useState } from "react";
@@ -13,7 +14,8 @@ const LoaderModel = () => {
 
 const Scene = ({ model = 'Pia_fit_avg.glb' }) => {
     const { scene } = useGLTF(model)
-    return <primitive castShadow position={[0, -1.5, 0]} object={scene} scale={0.017} />;
+    const copiedScene = useMemo(() => scene.clone(), [scene])
+    return <group><primitive position={[0, -1.5, 0]} object={copiedScene} scale={0.017} /></group>;
 };
 
 export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
@@ -43,7 +45,7 @@ export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
                         args={["blue", 1, 100]}
                         position={[-1, 1, 1]}
                     />
-                    <OrbitControls enablePan={false} enableZoom={true} maxDistance={15} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} autoRotate={hovered ? false :true} autoRotateSpeed={3} />
+                    <OrbitControls enablePan={false} enableZoom={true} maxDistance={15} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} autoRotate={hovered ? false : true} autoRotateSpeed={3} />
                 </Suspense>
             </Canvas>
         </div>

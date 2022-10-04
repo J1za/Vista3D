@@ -19,6 +19,7 @@ export default function HomeTemplate() {
                     <div className={style.models_inner}>
                         <Model3D model='Pia_fit_avg.glb' />
                         <Model3D model='Omar_fat_avg.glb' />
+                        <Model3D model='Pia_fit_avg.glb' />
                     </div>
                     <Button variant="outlined" style={{ alignSelf: 'center' }}>
                         <Typography variant='h5' fontWeight='700' color='black'>
