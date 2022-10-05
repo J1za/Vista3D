@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Html, useProgress, Stars } from "@react-three/drei";
+import { useGLTF, OrbitControls, Html, useProgress } from "@react-three/drei";
 import { Suspense, useState } from "react";
 
 import CircularProgress from '@mui/material/CircularProgress';
@@ -21,7 +21,7 @@ const Scene = ({ model = 'Pia_fit_avg.glb' }) => {
 export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
     const [hovered, setHover] = useState(false)
     return (
-        <div className='border-default'>
+        <div>
             <Canvas shadows camera={{ position: [0, 0, 10], fov: 20 }} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
                 <Suspense fallback={<LoaderModel />}>
                     <color attach="background" args={['#0096FF']} />

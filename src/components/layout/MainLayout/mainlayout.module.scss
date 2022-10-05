@@ -1,7 +1,22 @@
 .main {
     background-color: rgb(222, 222, 222);
     min-height: 100vh;
+    width: 100%;
     padding: 10px;
     display: flex;
     align-items: stretch;
+
+    &_inner {
+        padding: 50px 50px 20px;
+        display: grid;
+        gap: 20px;
+        height: 100%;
+        grid-template-columns: minmax(300px, 500px) minmax(300px, 1fr);
+    }
+    &_text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        grid-gap: 50px 0;
+    }
 }

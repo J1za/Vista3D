@@ -3647,6 +3647,11 @@
     "prop-types" "^15.6.0"
     "typed.js" "^2.0.6"
 
+"react-unity-webgl@^9.2.1":
+  "integrity" "sha512-FfnzjWT3hwlRe6aKzYAvjo5OFVw7eJJWfsnB884a+5AsBF9VhLaJdQADNlQL3wPfmfpQ4zgq07G56tGfZSSNNg=="
+  "resolved" "https://registry.npmjs.org/react-unity-webgl/-/react-unity-webgl-9.2.1.tgz"
+  "version" "9.2.1"
+
 "react-use-measure@^2.1.1":
   "integrity" "sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig=="
   "resolved" "https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.1.tgz"
