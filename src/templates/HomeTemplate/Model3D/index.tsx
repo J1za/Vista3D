@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Html, useProgress } from "@react-three/drei";
+import { useGLTF, OrbitControls, Html, useProgress, Stars } from "@react-three/drei";
 import { Suspense, useState } from "react";
 
 import CircularProgress from '@mui/material/CircularProgress';
@@ -34,7 +34,7 @@ export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
                             position={[0, -1.5, 0]}
 
                         >
-                            <circleGeometry attach='geometry' args={[15, 15]} />
+                            <circleGeometry attach='geometry' args={[1.1, 32]} />
                             <meshBasicMaterial attach="material" color="orange" />
                         </mesh>
                     </group>
@@ -46,6 +46,7 @@ export default function Model3D({ model = 'Pia_fit_avg.glb' }) {
                         position={[-1, 1, 1]}
                     />
                     <OrbitControls enablePan={false} enableZoom={true} maxDistance={15} minPolarAngle={Math.PI / 2.2} maxPolarAngle={Math.PI / 2.2} autoRotate={hovered ? false : true} autoRotateSpeed={3} />
+                
                 </Suspense>
             </Canvas>
         </div>
