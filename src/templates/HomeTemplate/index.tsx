@@ -10,9 +10,8 @@ import style from './home.module.scss';
 
 export default function HomeTemplate() {
     const {
-        //@ts-ignore
         loginModal: { toggleModal },
-    } = useModal();
+    }: any = useModal();
     const handleOpenModal = () => toggleModal();
 
     return (

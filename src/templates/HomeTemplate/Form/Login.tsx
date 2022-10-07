@@ -25,9 +25,8 @@ export interface ModalLoginProps {
 
 export function Login(props: ModalLoginProps) {
     const {
-        //@ts-ignore
         loginModal: { toggleModal },
-    } = useModal();
+    }: any = useModal();
 
     const [showPassword, setshowPassword] = useState(false);
     const [createAccount, setCreateAccount] = useState(false);
@@ -81,7 +80,6 @@ export function Login(props: ModalLoginProps) {
                             name="email"
                             type="email"
                             margin="normal"
-                            required
                             fullWidth
                             error={formik.touched.email && Boolean(formik.errors.email)}
                             helperText={formik.touched.email && formik.errors.email}
@@ -89,7 +87,6 @@ export function Login(props: ModalLoginProps) {
                         />
                         <TextField
                             margin="normal"
-                            required
                             fullWidth
                             label="Password"
                             name="password"

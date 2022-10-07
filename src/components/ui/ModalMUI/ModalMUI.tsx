@@ -2,8 +2,6 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import DialogTitle from '@mui/material/DialogTitle';
-import Typography from '@mui/material/Typography';
 import { useModal } from '../../../../context/ModalProvider';
 
 import style from './modelmui.module.scss'
@@ -27,9 +25,8 @@ const styleBox = {
 
 export function ModalMUI({ children, nameModal }: ModalMUIProp) {
     const {
-        //@ts-ignore
         loginModal: { showModal, toggleModal },
-    } = useModal();
+    }: any = useModal();
     const handleClose = () => toggleModal();
 
     return (
