@@ -1,20 +1,33 @@
-import * as React from 'react';
+import { useRef, useEffect } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
+import { useRouter } from 'next/router'
 
 export default function UnityGame() {
-    const { unityProvider, requestFullscreen, addEventListener, sendMessage } = useUnityContext({
+    const router = useRouter()
+
+    const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate } = useUnityContext({
         loaderUrl: "game/app.loader.js",
         dataUrl: "game/app.data",
         frameworkUrl: "game/app.framework.js",
         codeUrl: "game/app.wasm",
     });
-    const canvasRef = React.useRef(null);
+    const canvasRef = useRef(null);
     function handleClick() {
         requestFullscreen(true);
     }
     function handleClickOne() {
         sendMessage("BG", "OnClickAddNumber", 2);
     }
+    // async function handleClickBack() {
+    //     await unload();
+    //     // Ready to navigate to another page.
+    // }
+    useEffect(() => {
+        return () => {
+            detachAndUnloadImmediate()
+        }
+    }, [detachAndUnloadImmediate])
+
     return (
         <>
             <Unity
@@ -26,6 +39,7 @@ export default function UnityGame() {
                     cursor: 'pointer'
                 }}
             />
+
 
             <button onClick={handleClick}>Enter Fullscreen</button>
             <button onClick={handleClickOne}>Add +1</button>

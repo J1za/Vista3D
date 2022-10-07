@@ -1,6 +1,9 @@
 import * as React from 'react';
-import UnityGame from './UnityGame';
+import dynamic from 'next/dynamic'
 
+const UnityGame = dynamic(() => import('./UnityGame'), {
+    ssr: false
+})
 export interface IAppProps {
 }
 
