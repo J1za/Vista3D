@@ -9,8 +9,8 @@ import { Login } from './Form';
 import style from './home.module.scss';
 
 export default function HomeTemplate() {
-
     const {
+        //@ts-ignore
         loginModal: { toggleModal },
     } = useModal();
     const handleOpenModal = () => toggleModal();

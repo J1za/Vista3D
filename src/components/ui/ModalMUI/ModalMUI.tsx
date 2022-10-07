@@ -27,6 +27,7 @@ const styleBox = {
 
 export function ModalMUI({ children, nameModal }: ModalMUIProp) {
     const {
+        //@ts-ignore
         loginModal: { showModal, toggleModal },
     } = useModal();
     const handleClose = () => toggleModal();

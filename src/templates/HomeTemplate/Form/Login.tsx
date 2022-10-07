@@ -25,6 +25,7 @@ export interface ModalLoginProps {
 
 export function Login(props: ModalLoginProps) {
     const {
+        //@ts-ignore
         loginModal: { toggleModal },
     } = useModal();
 

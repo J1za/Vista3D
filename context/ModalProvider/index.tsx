@@ -1,9 +1,6 @@
-import React, { useState } from "react"
-const ModalContext = React.createContext();
-
-interface ModalProviderProps {
-    loginModal: any;
-}
+import React, { useState, createContext } from "react"
+//@ts-ignore
+const ModalContext = createContext();
 
 const useModal = () => {
     const context = React.useContext(ModalContext)
