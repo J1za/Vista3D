@@ -1,0 +1,1 @@
+export { ModalMUI } from './ModalMUI';

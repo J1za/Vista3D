@@ -12,6 +12,8 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@material-ui/core": "^4.12.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/lab": "^5.0.0-alpha.102",
     "@mui/material": "^5.10.8",
     "@mui/styled-engine-sc": "^5.10.6",
     "@react-three/drei": "^9.32.8",
@@ -19,6 +21,7 @@
     "@svgr/webpack": "^6.4.0",
     "classnames": "^2.3.2",
     "firebase": "^9.11.0",
+    "formik": "^2.2.9",
     "next": "12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,7 +32,8 @@
     "sass": "^1.55.0",
     "styled-components": "^5.3.6",
     "three": "^0.145.0",
-    "three-fbx-loader": "1.0.3"
+    "three-fbx-loader": "1.0.3",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "18.8.1",

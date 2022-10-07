@@ -10,4 +10,9 @@
         grid-gap: 30px 50px;
         grid-template-columns: repeat(3, 1fr);
     }
+    &_buttons{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
 }
