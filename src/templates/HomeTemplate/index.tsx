@@ -13,7 +13,7 @@ import { ref, onValue } from "firebase/database";
 
 export default function HomeTemplate() {
     const { user, logout } = useAuth();
-    const starCountRef = ref(database, 'users/' + user.uid);
+    const starCountRef = ref(database, 'users/' + user?.uid);
     onValue(starCountRef, (snapshot) => {
         const data = snapshot.val();
     });
