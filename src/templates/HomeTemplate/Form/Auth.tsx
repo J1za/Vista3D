@@ -62,7 +62,12 @@ export function Auth() {
             Router.push('/model-generator')
         } catch (err: any) {
             setLoadingButton(false);
-            toast.error(err.code)
+            toast.error(err.code, {
+                position: "bottom-right",
+                autoClose: 5000,
+                closeOnClick: true,
+                theme: "colored"
+            });
         }
     }
 
