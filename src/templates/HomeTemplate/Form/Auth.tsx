@@ -59,13 +59,18 @@ export function Auth() {
             }
             toggleModal();
             setLoadingButton(false);
-            Router.push('/model-generator')
+            toast.success('🦄 Authorization successful!', {
+                position: "top-center",
+                theme: "colored",
+                autoClose: 1000,
+            });
+            setTimeout(() => {
+                Router.push('/model-generator')
+            }, 500)
         } catch (err: any) {
             setLoadingButton(false);
             toast.error(err.code, {
                 position: "bottom-right",
-                autoClose: 5000,
-                closeOnClick: true,
                 theme: "colored"
             });
         }
