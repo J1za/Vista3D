@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-three-fbx-viewer": "1.0.0",
     "react-three-fiber": "6.0.13",
+    "react-toastify": "^9.0.8",
     "react-typed": "^1.2.0",
     "react-unity-webgl": "^9.2.1",
     "sass": "^1.55.0",

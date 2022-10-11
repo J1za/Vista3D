@@ -1,6 +1,5 @@
 import React, { useState, createContext } from "react"
-//@ts-ignore
-const ModalContext = createContext();
+const ModalContext = createContext<any>({});
 
 const useModal = () => {
     const context = React.useContext(ModalContext)

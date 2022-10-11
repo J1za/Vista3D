@@ -2,6 +2,9 @@ import 'src/assets/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ModalProvider } from '../../context/ModalProvider'
+import { AuthContextProvider } from '../../context/AuthContext/AuthContext'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,9 +16,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Tinos:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
-      <ModalProvider>
-        <Component {...pageProps} />
-      </ModalProvider>
+      <AuthContextProvider>
+        <ModalProvider>
+          <Component {...pageProps} />
+          <ToastContainer />
+        </ModalProvider>
+      </AuthContextProvider>
     </>
   )
 }

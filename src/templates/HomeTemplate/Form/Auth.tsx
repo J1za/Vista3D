@@ -18,12 +18,15 @@ import { object, string } from 'yup';
 import Router from 'next/router'
 
 import { useModal } from '../../../../context/ModalProvider';
+import { useAuth } from "../../../../context/AuthContext/AuthContext";
 
-export interface ModalLoginProps {
-    open?: boolean;
-}
+import { toast } from 'react-toastify';
 
-export function Login(props: ModalLoginProps) {
+type AuthType = 'login' | 'singup';
+
+export function Auth() {
+    const { signup, login } = useAuth();
+
     const {
         loginModal: { toggleModal },
     }: any = useModal();
@@ -31,6 +34,7 @@ export function Login(props: ModalLoginProps) {
     const [showPassword, setshowPassword] = useState(false);
     const [createAccount, setCreateAccount] = useState(false);
     const [loadingButton, setLoadingButton] = useState(false);
+
     const showPwd = () => {
         setshowPassword(!showPassword);
     };
@@ -43,6 +47,25 @@ export function Login(props: ModalLoginProps) {
         email: string().email('Invalid email').required('Required'),
     });
 
+    const handleAuth = async (type: AuthType) => {
+        try {
+            switch (type) {
+                case 'singup':
+                    await signup(formik.values.email, formik.values.password);
+                    break;
+                case 'login':
+                    await login(formik.values.email, formik.values.password)
+                    break;
+            }
+            toggleModal();
+            setLoadingButton(false);
+            Router.push('/model-generator')
+        } catch (err: any) {
+            setLoadingButton(false);
+            toast.error(err.code)
+        }
+    }
+
     const formik = useFormik({
         initialValues: {
             password: '',
@@ -51,11 +74,14 @@ export function Login(props: ModalLoginProps) {
         validationSchema: userValidation,
         onSubmit: values => {
             setLoadingButton(true)
-            setTimeout(() => {
-                toggleModal();
-                setLoadingButton(false);
-                Router.push('/model-generator')
-            }, 2000)
+            switch (createAccount) {
+                case true:
+                    handleAuth('singup');
+                    break;
+                default:
+                    handleAuth('login');
+                    break;
+            }
         },
     });
     return (
