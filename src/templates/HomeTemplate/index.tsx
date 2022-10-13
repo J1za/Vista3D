@@ -1,6 +1,6 @@
+import { useEffect, useState, useRef } from 'react';
 import cn from 'classnames'
 import { Button, Typography } from '@mui/material';
-import Model3D from './Model3D';
 import Link from 'next/link';
 import { ModalMUI } from '../../components/ui/ModalMUI';
 import { useModal } from '../../../context/ModalProvider';
@@ -12,51 +12,57 @@ import { database } from '../../../config/firebase';
 import { ref, onValue } from "firebase/database";
 
 export default function HomeTemplate() {
+    const urlVideo = 'videos/Galaxies.mp4'
+
+    const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
-    const starCountRef = ref(database, 'users/' + user?.uid);
-    onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-    });
     const {
         loginModal: { toggleModal },
     }: any = useModal();
+
     const handleOpenModal = () => toggleModal();
     const handleLogOut = () => logout();
-
+    const [mutedVideo, setmutedVideo] = useState<boolean>(true)
     return (
-        <div className={cn('border-default', style.models)}>
-            <div className={style.models_inner}>
-                <Model3D model='Pia_fit_avg.glb' />
-                <Model3D model='Omar_fat_avg.glb' />
-                <Model3D model='Pia_fit_avg.glb' />
-            </div>
-            <div className={style.models_buttons}>
+        <div className={cn(style.info)}>
+            <div className={style.info_inner}>
+                <div className={style.info_buttons}>
+                    {!user &&
+                        <>
+                            <Button onClick={handleOpenModal} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
+                                <Typography variant='h6' color='black' textTransform='capitalize' style={{ lineHeight: '24px' }}>
+                                    Log In <br />
+                                    Create Account
+                                </Typography>
+                            </Button>
+                            <ModalMUI nameModal='Authorization' >
+                                <Auth />
+                            </ModalMUI>
+                        </>
+                    }
+                    {user &&
+                        <div className='flex align-items'>
+                            <Typography color='black' style={{ lineHeight: '24px' }}>
+                                {user?.email}
+                            </Typography>
+                            <Button onClick={handleLogOut} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
+                                <Typography variant='h6' color='black' textTransform='capitalize'>
+                                    Logout
+                                </Typography>
+                            </Button>
+                        </div>
+                    }
+                </div>
+                <video autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
+                    <source src={urlVideo} type="video/mp4" />
+                </video>
                 <Link href='model-generator'>
-                    <Button variant="outlined" style={{ borderWidth: 2, borderColor: 'orange' }}>
-                        <Typography variant='h5' fontWeight='700' color='black' textTransform='capitalize'>
+                    <Button variant="outlined" style={{ borderWidth: 0, borderColor: 'orange', marginBottom: 'auto' }}>
+                        <Typography variant='h5' component='span' fontWeight='700' color='black' textTransform='uppercase' className={style.info_generatore}>
                             Generate yourself
                         </Typography>
                     </Button>
                 </Link>
-                {!user &&
-                    <>
-                        <Button onClick={handleOpenModal} variant="outlined" style={{ borderWidth: 2, borderColor: 'black' }}>
-                            <Typography variant='h5' fontWeight='700' color='black' textTransform='capitalize'>
-                                Login/Register
-                            </Typography>
-                        </Button>
-                        <ModalMUI nameModal='Authorization' >
-                            <Auth />
-                        </ModalMUI>
-                    </>
-                }
-                {user &&
-                    <Button onClick={handleLogOut} variant="outlined" style={{ borderWidth: 2, borderColor: 'black' }}>
-                        <Typography variant='h5' fontWeight='700' color='black' textTransform='capitalize'>
-                            Logout
-                        </Typography>
-                    </Button>
-                }
             </div>
         </div>
     );

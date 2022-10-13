@@ -18,10 +18,6 @@ export default function UnityGame() {
     function handleClickOne() {
         sendMessage("BG", "OnClickAddNumber", 2);
     }
-    // async function handleClickBack() {
-    //     await unload();
-    //     // Ready to navigate to another page.
-    // }
     useEffect(() => {
         return () => {
             detachAndUnloadImmediate()
@@ -35,14 +31,14 @@ export default function UnityGame() {
                 unityProvider={unityProvider}
                 style={{
                     width: '100%',
-                    height: '97%',
+                    height: '100vh',
                     cursor: 'pointer'
                 }}
             />
 
 
-            <button onClick={handleClick}>Enter Fullscreen</button>
-            <button onClick={handleClickOne}>Add +1</button>
+            {/* <button onClick={handleClick}>Enter Fullscreen</button> */}
+            {/* <button onClick={handleClickOne}>Add +1</button> */}
         </>
     );
 }

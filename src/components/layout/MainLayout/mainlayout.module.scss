@@ -1,22 +1,35 @@
 .main {
-    background-color: rgb(222, 222, 222);
     min-height: 100vh;
     width: 100%;
-    padding: 10px;
     display: flex;
     align-items: stretch;
-
+    position: relative;
     &_inner {
-        padding: 50px 50px 20px;
+        padding: 58px 45px 60px 82px;
         display: grid;
-        gap: 20px;
+        gap: 53px;
         height: 100%;
-        grid-template-columns: minmax(300px, 500px) minmax(300px, 1fr);
+        grid-template-columns: minmax(300px, 716px) minmax(300px, 1fr);
     }
     &_text {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         grid-gap: 50px 0;
+    }
+    &_links{
+        position: absolute;
+        bottom: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        svg{
+            transition: .3s linear;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
     }
 }

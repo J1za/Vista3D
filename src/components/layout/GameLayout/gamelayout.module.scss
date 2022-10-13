@@ -1,0 +1,25 @@
+.main {
+    height: 100vh;
+    overflow: hidden;
+    &_links {
+        position: absolute;
+        bottom: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 50px;
+        align-items: center;
+        gap: 14px;
+        svg {
+            transition: 0.3s linear;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &_logo {
+        top: 58px;
+        left: 82px;
+        position: absolute;
+    }
+}

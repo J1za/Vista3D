@@ -1,13 +1,18 @@
 import * as React from 'react';
-import style from './logo.module.scss'
+import style from './icons.module.scss'
 import Link from 'next/link';
+import cn from 'classnames';
 
 import ILogo from 'src/assets/images/VISTA-LOGO.svg'
 
-export default function Logo() {
+interface LogoProps {
+    className?: string;
+}
+
+export default function Logo({ className }: LogoProps) {
     return (
         <Link href='/' passHref>
-            <a className={style.logo}>
+            <a className={cn(style.logo, className)}>
                 <ILogo />
                 <p>Vista</p>
             </a>

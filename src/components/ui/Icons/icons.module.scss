@@ -1,0 +1,15 @@
+.logo {
+    display: flex;
+    align-self: flex-start;
+    grid-gap: 0 50px;
+    align-items: center;
+    svg {
+        width: 156px;
+        height: 164px;
+    }
+    p {
+        text-transform: uppercase;
+        font-size: 96px;
+        font-family: "GFS Didot", serif;
+    }
+}
