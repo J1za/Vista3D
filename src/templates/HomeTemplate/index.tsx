@@ -8,11 +8,9 @@ import { Auth } from './Form';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
 
 import style from './home.module.scss';
-import { database } from '../../../config/firebase';
-import { ref, onValue } from "firebase/database";
 
 export default function HomeTemplate() {
-    const urlVideo = 'videos/Galaxies.mp4'
+    const urlVideo = 'Galaxies.mp4'
 
     const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
