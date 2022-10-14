@@ -2172,6 +2172,11 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-select-country-list@^2.2.1":
+  "integrity" "sha512-Ixc9Vk+X+7P5KEEOK22ASf3y2McupLTfjQwhCUYUzlj00AgkDiERxT3t6Iv9MYkXQxkNx3pi+w8z/u7hdT3khg=="
+  "resolved" "https://registry.npmjs.org/@types/react-select-country-list/-/react-select-country-list-2.2.1.tgz"
+  "version" "2.2.1"
+
 "@types/react-transition-group@^4.2.0", "@types/react-transition-group@^4.4.5":
   "integrity" "sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA=="
   "resolved" "https://registry.npmjs.org/@types/react-transition-group/-/react-transition-group-4.4.5.tgz"
@@ -4314,6 +4319,11 @@
   dependencies:
     "loose-envify" "^1.1.0"
     "scheduler" "^0.21.0"
+
+"react-select-country-list@^2.2.3":
+  "integrity" "sha512-eRgXL613dVyJiE99yKDYLvSBKDxvIlhkmvO2DVIjdKVyUQq6kBqoMUV/2zuRIAsbRXgBGmKjeL1dxjf7zTfszg=="
+  "resolved" "https://registry.npmjs.org/react-select-country-list/-/react-select-country-list-2.2.3.tgz"
+  "version" "2.2.3"
 
 "react-three-fbx-viewer@1.0.0":
   "integrity" "sha512-966uaGEv0P0uNobCa8GRKiABciEZ6uMI0UNtzUo4cF+9dgFEoRQD75AwsMPGTcWSM4I6iXYw3n80tgH5OLFzWQ=="

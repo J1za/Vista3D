@@ -4,8 +4,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
+    updateProfile
 } from 'firebase/auth'
 import { auth } from '../../config/firebase'
+import { pushwriteUserData } from '../../services/pushUserDateFirebase'
 
 const AuthContext = createContext<any>({})
 
@@ -38,10 +40,16 @@ export const AuthContextProvider = ({
 
     const signup = (email: string, password: string) => {
         return createUserWithEmailAndPassword(auth, email, password)
+            .then(registeredUser => pushwriteUserData(registeredUser.user.uid, registeredUser.user.email, registeredUser.user.displayName))
     }
 
     const login = (email: string, password: string) => {
         return signInWithEmailAndPassword(auth, email, password)
+    }
+    const upProfile = (fullName: string) => {
+        return updateProfile((auth.currentUser as any), {
+            displayName: fullName
+        })
     }
 
     const logout = async () => {
@@ -50,7 +58,7 @@ export const AuthContextProvider = ({
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, signup, logout }}>
+        <AuthContext.Provider value={{ user, login, signup, logout, upProfile }}>
             {loading ? null : children}
         </AuthContext.Provider>
     )

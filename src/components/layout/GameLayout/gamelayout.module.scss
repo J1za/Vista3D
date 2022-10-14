@@ -18,8 +18,15 @@
         }
     }
     &_logo {
-        top: 58px;
-        left: 82px;
+        top: 60px;
+        left: 130px;
         position: absolute;
+        p{
+            font-size: 64px !important;
+            font-weight: 700;
+        }
+    }
+    &_inner{
+        display: flex;
     }
 }

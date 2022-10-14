@@ -5,8 +5,9 @@ import { ModalProvider } from '../../context/ModalProvider'
 import { AuthContextProvider } from '../../context/AuthContext/AuthContext'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { CSSTransition, SwitchTransition } from "react-transition-group";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Head>
@@ -18,7 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <AuthContextProvider>
         <ModalProvider>
-          <Component {...pageProps} />
+          <SwitchTransition>
+            <CSSTransition key={router.pathname} classNames='page' timeout={300}>
+              <Component {...pageProps} />
+            </CSSTransition>
+          </SwitchTransition>
           <ToastContainer />
         </ModalProvider>
       </AuthContextProvider>

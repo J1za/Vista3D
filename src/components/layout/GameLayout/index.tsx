@@ -5,6 +5,7 @@ import IGmail from 'src/assets/images/icons/Gmail_icon.svg'
 import Iinsta from 'src/assets/images/icons/Insta_icon.svg'
 import cn from 'classnames'
 import Link from 'next/link';
+import GameLeftSideBar from '../GameLeftSideBar';
 
 interface GameLayoutProps {
     children: React.ReactNode;
@@ -14,8 +15,11 @@ export default function GameLayout({ children }: GameLayoutProps) {
     return (
         <div className={style.main}>
             <div className={cn('f-width')}>
-                <Logo className={style.main_logo} />
-                {children}
+                <div className={style.main_inner}>
+                    <Logo className={style.main_logo} hideIcon={true} />
+                    <GameLeftSideBar />
+                    {children}
+                </div>
                 <div className={style.main_links}>
                     <Link href='https://www.instagram.com/'>
                         <a target="_blank">

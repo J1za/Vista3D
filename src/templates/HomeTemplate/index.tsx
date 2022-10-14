@@ -7,8 +7,6 @@ import { useModal } from '../../../context/ModalProvider';
 import { Auth } from './Form';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
 
-import preloadImage from 'src/assets/images/preload-video-main.jpg'
-
 import style from './home.module.scss';
 
 export default function HomeTemplate() {
@@ -42,8 +40,8 @@ export default function HomeTemplate() {
                     }
                     {user &&
                         <div className='flex align-items'>
-                            <Typography color='black' style={{ lineHeight: '24px' }}>
-                                {user?.email}
+                            <Typography color='black' style={{ lineHeight: '24px', fontSize: 17 }}>
+                                {user.displayName ? user.displayName: user.email}
                             </Typography>
                             <Button onClick={handleLogOut} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
                                 <Typography variant='h6' color='black' textTransform='capitalize'>

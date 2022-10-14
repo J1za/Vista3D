@@ -7,14 +7,16 @@ import ILogo from 'src/assets/images/VISTA-LOGO.svg'
 
 interface LogoProps {
     className?: string;
+    hideText?: boolean;
+    hideIcon?: boolean;
 }
 
-export default function Logo({ className }: LogoProps) {
+export default function Logo({ className, hideText, hideIcon }: LogoProps) {
     return (
         <Link href='/' passHref>
             <a className={cn(style.logo, className)}>
-                <ILogo />
-                <p>Vista</p>
+                {!hideIcon && <ILogo />}
+                {!hideText && <p>Vista</p>}
             </a>
         </Link>
     );
