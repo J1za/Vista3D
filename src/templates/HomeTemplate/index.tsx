@@ -53,7 +53,7 @@ export default function HomeTemplate() {
                         </div>
                     }
                 </div>
-                <video preload={preloadImage} autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
+                <video autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
                     <source src={urlVideo} type="video/mp4" />
                 </video>
                 <Link href='model-generator'>
