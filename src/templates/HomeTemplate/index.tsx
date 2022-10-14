@@ -7,10 +7,12 @@ import { useModal } from '../../../context/ModalProvider';
 import { Auth } from './Form';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
 
+import preloadImage from 'src/assets/images/preload-video-main.jpg'
+
 import style from './home.module.scss';
 
 export default function HomeTemplate() {
-    const urlVideo = 'Galaxies.mp4'
+    const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1665733345/Galaxies_c4vfba.mp4'
 
     const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
@@ -51,7 +53,7 @@ export default function HomeTemplate() {
                         </div>
                     }
                 </div>
-                <video autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
+                <video preload={preloadImage} autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
                     <source src={urlVideo} type="video/mp4" />
                 </video>
                 <Link href='model-generator'>
