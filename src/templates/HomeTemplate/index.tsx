@@ -6,8 +6,8 @@ import { ModalMUI } from '../../components/ui/ModalMUI';
 import { useModal } from '../../../context/ModalProvider';
 import { Auth } from './Form';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
-import Logo from 'src/components/ui/Icons/logo';
-import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import Logo from '../../components/ui/Icons/logo';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 import style from './home.module.scss';
 

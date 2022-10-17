@@ -5,7 +5,7 @@ import IGmail from 'src/assets/images/icons/Gmail_icon.svg'
 import Iinsta from 'src/assets/images/icons/Insta_icon.svg'
 import cn from 'classnames'
 import Link from 'next/link';
-import useWindowDimensions from 'src/hooks/useWindowDimensions';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 interface MainLayoutProps {
     children: React.ReactNode;
