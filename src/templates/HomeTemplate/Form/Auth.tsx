@@ -12,7 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 
 import { useFormik } from 'formik';
-import { object, string } from 'yup';
+import { object, string, ref } from 'yup';
 
 import Router from 'next/router'
 
@@ -46,6 +46,7 @@ export function Auth() {
     let userCreateValidation = object({
         password: string().required('Invalid password').min(6, 'Too Short!').max(20, 'Too Long!'),
         email: string().email('Invalid email').required('Required'),
+        confirmEmail: string().email('Invalid email').oneOf([ref('email')], "Email don't match").required('Required'),
         name: string().required('Name required').min(2, 'Too Short!'),
         surname: string().required('Surname required').min(2, 'Too Short!'),
     });
@@ -88,6 +89,7 @@ export function Auth() {
         initialValues: {
             password: '',
             email: '',
+            confirmEmail: '',
             name: '',
             surname: '',
             gender: '',
@@ -109,157 +111,153 @@ export function Auth() {
     });
 
     return (
-        <>
-            <Container maxWidth="sm" style={{ padding: 0 }}>
-                <form onSubmit={formik.handleSubmit}>
-                    <Box
-                        component='div'
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            height: "100%"
-                        }}
-                    >
-                        <Typography variant="h4" component="div" textAlign="center">
-                            {createAccount ? 'Create New Account' : 'Authorization'}
-                        </Typography>
-                        {createAccount &&
-                            <>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            label="Name"
-                                            name="name"
-                                            type="text"
-                                            margin="normal"
-                                            fullWidth
-                                            error={formik.touched.name && Boolean(formik.errors.name)}
-                                            helperText={formik.touched.name && formik.errors.name}
-                                            onChange={formik.handleChange}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            label="Surname"
-                                            name="surname"
-                                            type="text"
-                                            margin="normal"
-                                            fullWidth
-                                            error={formik.touched.surname && Boolean(formik.errors.surname)}
-                                            helperText={formik.touched.surname && formik.errors.surname}
-                                            onChange={formik.handleChange}
-                                        />
-                                    </Grid>
-                                </Grid>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                        <Autocomplete
-                                            disablePortal
-                                            options={optionsGender}
-                                            renderInput={(params) => (
-                                                <TextField {...params} label="Gender" name="gender" margin="normal" />
-                                            )}
-                                            onChange={(event, value) => (formik.setFieldValue("gender", value !== null && value))}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            label="Age"
-                                            name="age"
-                                            type="number"
-                                            margin="normal"
-                                            fullWidth
-                                            onChange={formik.handleChange}
-                                        />
-                                    </Grid>
-                                </Grid>
-
-                                <Autocomplete
-                                    disablePortal
-                                    id="combo-box-demo"
-                                    options={optionsCountry}
-                                    renderInput={(params) => <TextField {...params} label="Nationality" margin="normal" name="nationality" />}
-                                    onChange={(event, value: any) => (formik.setFieldValue("nationality", value !== null && value?.label))}
-                                />
-                            </>
-                        }
-                        <Grid container columnSpacing={2}>
-                            <Grid item xs={createAccount ? 6 : 12}>
+        <form onSubmit={formik.handleSubmit}>
+            <Box
+                component='div'
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    height: "100%"
+                }}
+            >
+                <Typography variant="h4" component="div" textAlign="center">
+                    {createAccount ? 'Create New Account' : 'Authorization'}
+                </Typography>
+                {createAccount &&
+                    <>
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
                                 <TextField
-                                    label="Email"
-                                    name="email"
-                                    type="email"
+                                    label="Name"
+                                    name="name"
+                                    type="text"
                                     margin="normal"
                                     fullWidth
-                                    error={formik.touched.email && Boolean(formik.errors.email)}
-                                    helperText={formik.touched.email && formik.errors.email}
+                                    error={formik.touched.name && Boolean(formik.errors.name)}
+                                    helperText={formik.touched.name && formik.errors.name}
                                     onChange={formik.handleChange}
                                 />
                             </Grid>
-                            {createAccount &&
-                                <Grid item xs={6}>
-                                    <TextField
-                                        label="Confirmation Email"
-                                        name="email"
-                                        type="email"
-                                        margin="normal"
-                                        fullWidth
-                                        error={formik.touched.email && Boolean(formik.errors.email)}
-                                        helperText={formik.touched.email && formik.errors.email}
-                                        onChange={formik.handleChange}
-                                    />
-
-                                </Grid>
-                            }
-                            <Grid item xs={12}>
+                            <Grid item xs={6}>
                                 <TextField
+                                    label="Surname"
+                                    name="surname"
+                                    type="text"
                                     margin="normal"
                                     fullWidth
-                                    label="Password"
-                                    name="password"
-                                    type={showPassword ? "text" : "password"}
-                                    error={formik.touched.password && Boolean(formik.errors.password)}
-                                    helperText={formik.touched.password && formik.errors.password}
+                                    error={formik.touched.surname && Boolean(formik.errors.surname)}
+                                    helperText={formik.touched.surname && formik.errors.surname}
                                     onChange={formik.handleChange}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <IconButton onClick={showPwd}>
-                                                {showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        )
-                                    }}
                                 />
                             </Grid>
                         </Grid>
-                    </Box>
-                    {createAccount &&
-                        <Typography onClick={createAcc} component="span" color='blue' style={{ display: 'inline-block', marginTop: 5, cursor: 'pointer' }}>
-                            Back to Authorization
-                        </Typography>
-                    }
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                                <Autocomplete
+                                    disablePortal
+                                    options={optionsGender}
+                                    renderInput={(params) => (
+                                        <TextField {...params} label="Gender" name="gender" margin="normal" />
+                                    )}
+                                    onChange={(event, value) => (formik.setFieldValue("gender", value !== null && value))}
+                                />
+                            </Grid>
+                            <Grid item xs={6}>
+                                <TextField
+                                    label="Age"
+                                    name="age"
+                                    type="number"
+                                    margin="normal"
+                                    fullWidth
+                                    onChange={formik.handleChange}
+                                />
+                            </Grid>
+                        </Grid>
 
-                    <Box component='div' sx={{ mt: 2 }}>
-                        <LoadingButton
-                            style={{ padding: 15, fontSize: 18 }}
-                            variant="contained"
-                            color="primary"
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={optionsCountry}
+                            renderInput={(params) => <TextField {...params} label="Nationality" margin="normal" name="nationality" />}
+                            onChange={(event, value: any) => (formik.setFieldValue("nationality", value !== null && value?.label))}
+                        />
+                    </>
+                }
+                <Grid container columnSpacing={2}>
+                    <Grid item xs={createAccount ? 6 : 12}>
+                        <TextField
+                            label="Email"
+                            name="email"
+                            type="email"
+                            margin="normal"
                             fullWidth
-                            loading={loadingButton}
-                            type="submit"
-                        >
-                            {createAccount ? 'Create account' : 'Sign in'}
-                        </LoadingButton>
-                    </Box>
-                    {!createAccount &&
-                        <Box component='div' sx={{ mt: 2, textAlign: 'center' }} onClick={createAcc}>
-                            <LoadingButton variant="outlined" fullWidth color="secondary" style={{ fontSize: 16 }}>Create account</LoadingButton>
-                        </Box>
-                    }
+                            error={formik.touched.email && Boolean(formik.errors.email)}
+                            helperText={formik.touched.email && formik.errors.email}
+                            onChange={formik.handleChange}
+                        />
+                    </Grid>
+                    {createAccount &&
+                        <Grid item xs={6}>
+                            <TextField
+                                label="Confirmation Email"
+                                name="confirmEmail"
+                                type="email"
+                                margin="normal"
+                                fullWidth
+                                error={formik.touched.confirmEmail && Boolean(formik.errors.confirmEmail)}
+                                helperText={formik.touched.confirmEmail && formik.errors.confirmEmail}
+                                onChange={formik.handleChange}
+                            />
 
-                </form>
-            </Container>
-        </>
+                        </Grid>
+                    }
+                    <Grid item xs={12}>
+                        <TextField
+                            margin="normal"
+                            fullWidth
+                            label="Password"
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            error={formik.touched.password && Boolean(formik.errors.password)}
+                            helperText={formik.touched.password && formik.errors.password}
+                            onChange={formik.handleChange}
+                            InputProps={{
+                                endAdornment: (
+                                    <IconButton onClick={showPwd}>
+                                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                )
+                            }}
+                        />
+                    </Grid>
+                </Grid>
+            </Box>
+            {createAccount &&
+                <Typography onClick={createAcc} component="span" color='blue' style={{ display: 'inline-block', marginTop: 5, cursor: 'pointer' }}>
+                    Back to Authorization
+                </Typography>
+            }
+
+            <Box component='div' sx={{ mt: 2 }}>
+                <LoadingButton
+                    style={{ padding: 10, fontSize: 18 }}
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    loading={loadingButton}
+                    type="submit"
+                >
+                    {createAccount ? 'Create account' : 'Sign in'}
+                </LoadingButton>
+            </Box>
+            {!createAccount &&
+                <Box component='div' sx={{ mt: 2, textAlign: 'center' }} onClick={createAcc}>
+                    <LoadingButton variant="outlined" fullWidth color="secondary" style={{ fontSize: 16 }}>Create account</LoadingButton>
+                </Box>
+            }
+
+        </form>
     );
 }
 

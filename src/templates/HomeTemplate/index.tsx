@@ -6,10 +6,13 @@ import { ModalMUI } from '../../components/ui/ModalMUI';
 import { useModal } from '../../../context/ModalProvider';
 import { Auth } from './Form';
 import { useAuth } from '../../../context/AuthContext/AuthContext';
+import Logo from 'src/components/ui/Icons/logo';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 import style from './home.module.scss';
 
 export default function HomeTemplate() {
+    const { isDesktopSmall } = useWindowDimensions();
     const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1665733345/Galaxies_c4vfba.mp4'
 
     const videoEl = useRef<HTMLVideoElement>(null);
@@ -25,6 +28,7 @@ export default function HomeTemplate() {
         <div className={cn(style.info)}>
             <div className={style.info_inner}>
                 <div className={style.info_buttons}>
+                    {isDesktopSmall && <Logo />}
                     {!user &&
                         <>
                             <Button onClick={handleOpenModal} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
@@ -33,15 +37,12 @@ export default function HomeTemplate() {
                                     Create Account
                                 </Typography>
                             </Button>
-                            <ModalMUI nameModal='Authorization' >
-                                <Auth />
-                            </ModalMUI>
                         </>
                     }
                     {user &&
                         <div className='flex align-items'>
                             <Typography color='black' style={{ lineHeight: '24px', fontSize: 17 }}>
-                                {user.displayName ? user.displayName: user.email}
+                                {user.displayName ? user.displayName : user.email}
                             </Typography>
                             <Button onClick={handleLogOut} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
                                 <Typography variant='h6' color='black' textTransform='capitalize'>
@@ -62,6 +63,9 @@ export default function HomeTemplate() {
                     </Button>
                 </Link>
             </div>
+            <ModalMUI >
+                <Auth />
+            </ModalMUI>
         </div>
     );
 }

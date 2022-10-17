@@ -37,7 +37,7 @@ export function ModalMUI({ children, nameModal }: ModalMUIProp) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box component='div' sx={styleBox}>
+                <Box component='div' sx={styleBox} style={{ maxWidth: '530px', width: '95%', padding: 15 }}>
                     <Box component='div' className={style.dialogTitle}>
                         <IconButton onClick={handleClose}>
                             <CloseIcon />

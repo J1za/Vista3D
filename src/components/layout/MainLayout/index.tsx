@@ -5,6 +5,7 @@ import IGmail from 'src/assets/images/icons/Gmail_icon.svg'
 import Iinsta from 'src/assets/images/icons/Insta_icon.svg'
 import cn from 'classnames'
 import Link from 'next/link';
+import useWindowDimensions from 'src/hooks/useWindowDimensions';
 
 interface MainLayoutProps {
     children: React.ReactNode;
@@ -12,12 +13,13 @@ interface MainLayoutProps {
 }
 
 export default function MainLayout({ children, customSideBar }: MainLayoutProps) {
+    const { isDesktopSmall } = useWindowDimensions();
     return (
         <div className={style.main}>
             <div className={cn('f-width')}>
                 <div className={style.main_inner}>
                     <div className={style.main_text}>
-                        <Logo />
+                        {!isDesktopSmall && <Logo />}
                         {customSideBar && customSideBar}
                     </div>
                     {children}
