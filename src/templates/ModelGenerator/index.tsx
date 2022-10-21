@@ -9,7 +9,7 @@ export interface IAppProps {
 
 export default function ModelGeneratorTemplate(props: IAppProps) {
     return (
-        <div className='h-full'>
+        <div className='h-full o-hidden'>
             <UnityGame />
         </div>
     );

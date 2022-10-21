@@ -8,11 +8,11 @@ export interface IAppProps {
 
 export default function ModelGenerator(props: IAppProps) {
     return (
-        <GameLayout>
+        <>
             <Head>
                 <title>VISTA 3d | model genirator</title>
             </Head>
             <ModelGeneratorTemplate />
-        </GameLayout>
+        </>
     );
 }

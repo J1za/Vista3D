@@ -31,8 +31,7 @@ export default function UnityGame() {
                 unityProvider={unityProvider}
                 style={{
                     width: '100%',
-                    height: '100vh',
-                    cursor: 'pointer'
+                    height: '100vh'
                 }}
             />
 
