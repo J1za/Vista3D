@@ -7,7 +7,7 @@ export default function UnityGame() {
 
     const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate } = useUnityContext({
         loaderUrl: "game/app.loader.js",
-        dataUrl: "https://media.githubusercontent.com/media/J1za/Vista3D/master/public/game/app.data?token=ADU5SOZZVW4HFHOCKS3CRVTDKLI5Y",
+        dataUrl: "game/app.data",
         frameworkUrl: "game/app.framework.js",
         codeUrl: "game/app.wasm",
     });
