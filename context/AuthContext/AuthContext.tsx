@@ -4,7 +4,8 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    updateProfile
+    updateProfile,
+    sendEmailVerification
 } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { pushwriteUserData } from '../../services/pushUserDateFirebase'
@@ -27,7 +28,7 @@ export const AuthContextProvider = ({
                 setUser({
                     uid: user.uid,
                     email: user.email,
-                    displayName: user.displayName,
+                    displayName: user.displayName
                 })
             } else {
                 setUser(null)
@@ -37,10 +38,12 @@ export const AuthContextProvider = ({
 
         return () => unsubscribe()
     }, [])
-
     const signup = (email: string, password: string) => {
         return createUserWithEmailAndPassword(auth, email, password)
-            .then(registeredUser => pushwriteUserData(registeredUser.user.uid, registeredUser.user.email, registeredUser.user.displayName))
+            .then(registeredUser => {
+                pushwriteUserData(registeredUser.user.uid, registeredUser.user.email, registeredUser.user.displayName)
+                sendEmailVerification(registeredUser.user)
+            })
     }
 
     const login = (email: string, password: string) => {

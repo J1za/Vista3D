@@ -27,7 +27,6 @@ export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user } = useAuth();
 
-
     const {
         loginModal: { toggleModal },
     }: any = useModal();
