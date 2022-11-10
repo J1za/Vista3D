@@ -13,7 +13,7 @@ import style from './home.module.scss';
 
 export default function HomeTemplate() {
     const { isDesktopSmall } = useWindowDimensions();
-    const urlVideo = 'Final_video.mp4'
+    const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1668087939/Final_video_odpzve.mp4'
 
     const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
