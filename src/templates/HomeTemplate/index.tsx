@@ -13,7 +13,7 @@ import style from './home.module.scss';
 
 export default function HomeTemplate() {
     const { isDesktopSmall } = useWindowDimensions();
-    const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1665733345/Galaxies_c4vfba.mp4'
+    const urlVideo = 'Final_video.mp4'
 
     const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
@@ -23,7 +23,6 @@ export default function HomeTemplate() {
 
     const handleOpenModal = () => toggleModal();
     const handleLogOut = () => logout();
-    const [mutedVideo, setmutedVideo] = useState<boolean>(true)
     return (
         <div className={cn(style.info)}>
             <div className={style.info_inner}>
@@ -52,7 +51,7 @@ export default function HomeTemplate() {
                         </div>
                     }
                 </div>
-                <video autoPlay loop muted={mutedVideo} playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
+                <video autoPlay loop muted playsInline={true} style={{ width: '100%', height: 518, objectFit: 'cover' }} ref={videoEl}>
                     <source src={urlVideo} type="video/mp4" />
                 </video>
                 <Link href='model-generator'>
