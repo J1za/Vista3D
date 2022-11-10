@@ -19,11 +19,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       </Head>
       <AuthContextProvider>
         <ModalProvider>
-          <SwitchTransition>
-            <CSSTransition key={router.pathname} classNames='page' timeout={300}>
-              <Component {...pageProps} />
-            </CSSTransition>
-          </SwitchTransition>
+          <Component {...pageProps} />
           <ToastContainer />
         </ModalProvider>
       </AuthContextProvider>
