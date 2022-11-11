@@ -17,7 +17,6 @@ export default function HomeTemplate() {
 
     const videoEl = useRef<HTMLVideoElement>(null);
     const { user, logout } = useAuth();
-    const { emailVerify } = user;
     const {
         loginModal: { toggleModal },
     }: any = useModal();
@@ -29,7 +28,7 @@ export default function HomeTemplate() {
             <div className={style.info_inner}>
                 <div className={style.info_buttons}>
                     {isDesktopSmall && <Logo />}
-                    {!emailVerify &&
+                    {!user?.emailVerify &&
                         <>
                             <Button onClick={handleOpenModal} variant="outlined" style={{ borderWidth: 0, borderColor: 'black' }}>
                                 <Typography variant='h6' color='black' textTransform='capitalize' style={{ lineHeight: '24px' }}>
@@ -39,7 +38,7 @@ export default function HomeTemplate() {
                             </Button>
                         </>
                     }
-                    {user && emailVerify &&
+                    {user && user?.emailVerify &&
                         <div className='flex align-items'>
                             <Typography color='black' style={{ lineHeight: '24px', fontSize: 17 }}>
                                 {user.displayName ? user.displayName : user.email}

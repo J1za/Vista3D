@@ -27,7 +27,6 @@ type AuthType = 'login' | 'singup';
 export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user } = useAuth();
-    const { emailVerify } = user;
     const {
         loginModal: { toggleModal },
     }: any = useModal();
@@ -68,7 +67,7 @@ export function Auth() {
             }
             toggleModal();
             setLoadingButton(false);
-            if (emailVerify) {
+            if (user?.emailVerify) {
                 toast.success('🦄 Authorization successful!', {
                     position: "top-center",
                     theme: "colored",
