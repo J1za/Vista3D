@@ -27,6 +27,7 @@ type AuthType = 'login' | 'singup';
 export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user } = useAuth();
+
     const {
         loginModal: { toggleModal },
     }: any = useModal();
@@ -53,37 +54,44 @@ export function Auth() {
         password: string().required('Invalid password').min(6, 'Too Short!').max(20, 'Too Long!'),
         email: string().email('Invalid email').required('Required')
     });
-
+    const checkingVerifyEmail = (arg: any) => {
+        if (arg.user.emailVerified) {
+            toast.success('🦄 Authorization successful!', {
+                position: "top-center",
+                theme: "colored",
+                autoClose: 1000,
+            });
+            setTimeout(() => {
+                Router.push('/model-generator')
+            }, 500)
+        } else {
+            toast.warning('Confirm your email address to sign in! Check your email', {
+                position: "top-center",
+                theme: "colored",
+                autoClose: 1500
+            });
+        }
+    }
     const handleAuth = async (type: AuthType) => {
         try {
             switch (type) {
                 case 'singup':
-                    await signup(formik.values.email, formik.values.password);
+                    await signup(formik.values.email, formik.values.password)
+                        .then((loginUser: Object) => {
+                            checkingVerifyEmail(loginUser)
+                        });
                     await upProfile(`${formik.values.name} ${formik.values.surname}`);
                     break;
                 case 'login':
                     await login(formik.values.email, formik.values.password)
+                        .then((loginUser: Object) => {
+                            checkingVerifyEmail(loginUser)
+                        })
                     break;
             }
             toggleModal();
             setLoadingButton(false);
-            if (user?.emailVerify) {
-                toast.success('🦄 Authorization successful!', {
-                    position: "top-center",
-                    theme: "colored",
-                    autoClose: 1000,
-                });
-                setTimeout(() => {
-                    Router.push('/model-generator')
-                }, 500)
-            } else {
-                toast.warning('Confirm your email address to sign in!', {
-                    position: "top-center",
-                    theme: "colored",
-                    autoClose: 1500,
-                    className: style.toast
-                });
-            }
+
         } catch (err: any) {
             setLoadingButton(false);
             toast.error(err.code, {

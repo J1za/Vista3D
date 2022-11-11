@@ -8,7 +8,7 @@ import {
     sendEmailVerification
 } from 'firebase/auth'
 import { auth } from '../../config/firebase'
-import { pushwriteUserData } from '../../services/pushUserDateFirebase'
+import { pushwriteUserData } from '../../src/services/pushUserDateFirebase'
 
 const AuthContext = createContext<any>({})
 

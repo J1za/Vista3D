@@ -20,7 +20,6 @@ export default function HomeTemplate() {
     const {
         loginModal: { toggleModal },
     }: any = useModal();
-
     const handleOpenModal = () => toggleModal();
     const handleLogOut = () => logout();
     return (

@@ -1,4 +1,4 @@
-import { database } from "../config/firebase";
+import { database } from "../../config/firebase";
 import { ref, set } from "firebase/database";
 
 interface WriteUserDataProp {
