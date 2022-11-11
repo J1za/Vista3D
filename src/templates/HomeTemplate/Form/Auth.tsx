@@ -20,13 +20,14 @@ import { useModal } from '../../../../context/ModalProvider';
 import { useAuth } from "../../../../context/AuthContext/AuthContext";
 import { toast } from 'react-toastify';
 import countryList from 'react-select-country-list';
+import style from './style.module.scss'
 
 type AuthType = 'login' | 'singup';
 
 export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user } = useAuth();
-
+    const { emailVerify } = user;
     const {
         loginModal: { toggleModal },
     }: any = useModal();
@@ -67,14 +68,23 @@ export function Auth() {
             }
             toggleModal();
             setLoadingButton(false);
-            toast.success('🦄 Authorization successful!', {
-                position: "top-center",
-                theme: "colored",
-                autoClose: 1000,
-            });
-            setTimeout(() => {
-                Router.push('/model-generator')
-            }, 500)
+            if (emailVerify) {
+                toast.success('🦄 Authorization successful!', {
+                    position: "top-center",
+                    theme: "colored",
+                    autoClose: 1000,
+                });
+                setTimeout(() => {
+                    Router.push('/model-generator')
+                }, 500)
+            } else {
+                toast.warning('Confirm your email address to sign in!', {
+                    position: "top-center",
+                    theme: "colored",
+                    autoClose: 1500,
+                    className: style.toast
+                });
+            }
         } catch (err: any) {
             setLoadingButton(false);
             toast.error(err.code, {
