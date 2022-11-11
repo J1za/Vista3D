@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useRouter } from 'next/router'
 import { CircularProgress, Box, Typography } from '@mui/material';
@@ -7,9 +7,9 @@ import style from './style.module.scss'
 export default function UnityGame() {
     const router = useRouter()
 
-    const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded } = useUnityContext({
+    const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded, addEventListener, removeEventListener } = useUnityContext({
         loaderUrl: "game/app.loader.js",
-        dataUrl: "https://ucarecdn.com/51c98977-d5b1-442a-93e7-63e1357670f4/app.data",
+        dataUrl: "https://ucarecdn.com/ebe06d0c-f4f2-408e-8292-afdd6d538db6/app.data",
         frameworkUrl: "game/app.framework.js",
         codeUrl: "game/app.wasm",
     });
@@ -18,8 +18,17 @@ export default function UnityGame() {
         requestFullscreen(true);
     }
     function handleClickOne() {
-        sendMessage("BG", "OnClickAddNumber", 2);
+        sendMessage("Cloth Example", "OnClickLogoBtn");
     }
+    // const handleSetScore = useCallback((score) => {
+    //     console.log(score);
+    // }, []);
+    // useEffect(() => {
+    //     addEventListener("OnClickLogoBtn", handleSetScore);
+    //     return () => {
+    //         removeEventListener("OnClickLogoBtn", handleSetScore);
+    //     };
+    // }, [addEventListener, removeEventListener, handleSetScore]);
     useEffect(() => {
         return () => {
             detachAndUnloadImmediate()
