@@ -60,6 +60,7 @@ export function Auth() {
                 position: "top-center",
                 theme: "colored",
                 autoClose: 1000,
+                className: style.toast
             });
             setTimeout(() => {
                 Router.push('/model-generator')
@@ -68,7 +69,8 @@ export function Auth() {
             toast.warning('Confirm your email address to sign in! Check your email', {
                 position: "top-center",
                 theme: "colored",
-                autoClose: 1500
+                autoClose: 1500,
+                className: style.toast
             });
         }
     }
@@ -77,8 +79,13 @@ export function Auth() {
             switch (type) {
                 case 'singup':
                     await signup(formik.values.email, formik.values.password)
-                        .then((loginUser: Object) => {
-                            checkingVerifyEmail(loginUser)
+                        .then(() => {
+                            toast.warning('Confirm your email address to sign in! Check your email', {
+                                position: "top-center",
+                                theme: "colored",
+                                autoClose: 1500,
+                                className: style.toast
+                            });
                         });
                     await upProfile(`${formik.values.name} ${formik.values.surname}`);
                     break;
