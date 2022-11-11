@@ -9,7 +9,7 @@ export default function UnityGame() {
 
     const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded } = useUnityContext({
         loaderUrl: "game/app.loader.js",
-        dataUrl: "game/app.data",
+        dataUrl: "https://ucarecdn.com/51c98977-d5b1-442a-93e7-63e1357670f4/app.data",
         frameworkUrl: "game/app.framework.js",
         codeUrl: "game/app.wasm",
     });
