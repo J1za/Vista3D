@@ -1,34 +1,28 @@
 import { useRef, useEffect, useCallback } from 'react';
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { useRouter } from 'next/router'
 import { CircularProgress, Box, Typography } from '@mui/material';
 import style from './style.module.scss'
+import Router from 'next/router'
 
 export default function UnityGame() {
-    const router = useRouter()
-
     const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded, addEventListener, removeEventListener } = useUnityContext({
-        loaderUrl: "game/app.loader.js",
-        dataUrl: "https://ucarecdn.com/ebe06d0c-f4f2-408e-8292-afdd6d538db6/app.data",
-        frameworkUrl: "game/app.framework.js",
-        codeUrl: "game/app.wasm",
+        loaderUrl: "https://ucarecdn.com/cd9960d8-a8aa-4b91-8640-8f894f5fa874/B3loader.js",
+        dataUrl: "https://ucarecdn.com/943475a6-41ea-4508-8754-d428fd96c667/B3.data",
+        frameworkUrl: "https://ucarecdn.com/e4ddfd85-19ae-4de4-91f0-3b5db7025091/B3framework.js",
+        codeUrl: "https://ucarecdn.com/fec39a74-2e1b-4486-9f34-be770c1ad696/B3.wasm",
     });
     const canvasRef = useRef(null);
-    function handleClick() {
-        requestFullscreen(true);
-    }
-    function handleClickOne() {
-        sendMessage("Cloth Example", "OnClickLogoBtn");
-    }
-    // const handleSetScore = useCallback((score) => {
-    //     console.log(score);
-    // }, []);
-    // useEffect(() => {
-    //     addEventListener("OnClickLogoBtn", handleSetScore);
-    //     return () => {
-    //         removeEventListener("OnClickLogoBtn", handleSetScore);
-    //     };
-    // }, [addEventListener, removeEventListener, handleSetScore]);
+    const handleSetScore = useCallback(() => {
+        Router.push('/')
+    }, []);
+    useEffect(() => {
+        addEventListener("RedirectToHomePage", handleSetScore);
+        return () => {
+            removeEventListener("RedirectToHomePage", handleSetScore);
+        };
+    }, [addEventListener, removeEventListener, handleSetScore]);
+
+    //disable game when another page
     useEffect(() => {
         return () => {
             detachAndUnloadImmediate()
