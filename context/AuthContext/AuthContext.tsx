@@ -5,7 +5,10 @@ import {
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
-    sendEmailVerification
+    sendEmailVerification,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect
 } from 'firebase/auth'
 import { auth } from '../../config/firebase'
 import { pushwriteUserData } from '../../src/services/pushUserDateFirebase'
@@ -19,6 +22,7 @@ export const AuthContextProvider = ({
 }: {
     children: React.ReactNode
 }) => {
+    const provider = new GoogleAuthProvider();
     const [user, setUser] = useState<any>(null)
     const [loading, setLoading] = useState(true)
 
@@ -29,7 +33,8 @@ export const AuthContextProvider = ({
                     uid: user.uid,
                     email: user.email,
                     displayName: user.displayName,
-                    emailVerify: user.emailVerified
+                    emailVerify: user.emailVerified,
+                    allInfo: user
                 })
             } else {
                 setUser(null)
@@ -50,6 +55,9 @@ export const AuthContextProvider = ({
     const login = (email: string, password: string) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const loginWithGoogle = () => {
+        return signInWithPopup(auth, provider)
+    }
     const upProfile = (fullName: string) => {
         return updateProfile((auth.currentUser as any), {
             displayName: fullName
@@ -62,7 +70,7 @@ export const AuthContextProvider = ({
     }
 
     return (
-        <AuthContext.Provider value={{ user, login, signup, logout, upProfile }}>
+        <AuthContext.Provider value={{ user, login, signup, logout, upProfile, loginWithGoogle }}>
             {loading ? null : children}
         </AuthContext.Provider>
     )

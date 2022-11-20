@@ -1,8 +1,10 @@
+@import "../fonts/Helvetica/stylesheet";
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Belleza", sans-serif;
 }
 html {
   overflow-y: scroll;
@@ -43,7 +45,7 @@ p {
 .align-items {
   align-items: center;
 }
-.o-hidden{
+.o-hidden {
   overflow: hidden;
 }
 div,
@@ -89,6 +91,54 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .page-exit-active {
   opacity: 0;
-  transform: scale(.975);
+  transform: scale(0.975);
   transition: opacity 300ms, transform 350ms;
+}
+
+.ffHelvetica {
+  font-family: "HelveticaNeueCyr", sans-serif;
+}
+.MuiTextField-root input:-webkit-autofill,
+.MuiOutlinedInput-notchedOutline {
+  border-radius: 8px;
+}
+.MuiTextField-root input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.MuiFormLabel-root {
+  font-family: "HelveticaNeueCyr", sans-serif;
+  font-weight: 100;
+}
+.MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+.MuiTextField-root {
+  background: #ffffff;
+  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: none;
+  // .Mui-focused .MuiOutlinedInput-notchedOutline {
+  //   border-color: rgb(68, 68, 68);
+  // }
+}
+.MuiInputLabel-root.Mui-focused {
+  color: rgba(0, 0, 0, 0.6);
+}
+.MuiInputBase-root {
+  position: relative;
+  font-family: "HelveticaNeueCyr", sans-serif;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 95%;
+    height: 0.5px;
+    bottom: 12px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: #000000aa;
+  }
+}
+.MuiFormHelperText-root.Mui-error {
+  position: absolute;
+  bottom: -5px;
 }

@@ -1,11 +1,8 @@
 import * as React from 'react';
 import style from './mainlayout.module.scss'
 import Logo from '../../../components/ui/Icons/logo';
-import IGmail from 'src/assets/images/icons/Gmail_icon.svg'
-import Iinsta from 'src/assets/images/icons/Insta_icon.svg'
 import cn from 'classnames'
-import Link from 'next/link';
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import { Typography } from '@mui/material';
 
 interface MainLayoutProps {
     children: React.ReactNode;
@@ -13,31 +10,22 @@ interface MainLayoutProps {
 }
 
 export default function MainLayout({ children, customSideBar }: MainLayoutProps) {
-    const { isDesktopSmall } = useWindowDimensions();
+    const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1668087939/Final_video_odpzve.mp4';
     return (
         <div className={style.main}>
             <div className={cn('f-width')}>
-                <div className={style.main_inner}>
-                    <div className={style.main_text}>
-                        {!isDesktopSmall && <Logo />}
-                        {customSideBar && customSideBar}
-                    </div>
-                    {children}
+                <div className={style.main_video}>
+                    <video autoPlay loop muted playsInline={true}>
+                        <source src={urlVideo} type="video/mp4" />
+                    </video>
                 </div>
-                <div className={style.main_links}>
-                    <Link href='https://www.instagram.com/'>
-                        <a target="_blank">
-                            <Iinsta width={38} height={40} />
-                        </a>
-                    </Link>
-                    <Link href='mailto:mail@mail.com'>
-                        <a>
-                            <IGmail width={42} height={42} />
-                        </a>
-                    </Link>
+                <div className={style.main_inner}>
+                    <Logo />
+                    {children}
+                    <Typography className={style.main_desc} textAlign='center'>“MAKE IT EASY FOR THEM, MAKE IT EASIER FOR YOU”</Typography>
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }

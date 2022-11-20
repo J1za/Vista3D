@@ -5,7 +5,7 @@ import style from './style.module.scss'
 import Router from 'next/router'
 
 export default function UnityGame() {
-    const { unityProvider, requestFullscreen, sendMessage, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded, addEventListener, removeEventListener } = useUnityContext({
+    const { unityProvider, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded, addEventListener, removeEventListener } = useUnityContext({
         loaderUrl: "https://ucarecdn.com/cd9960d8-a8aa-4b91-8640-8f894f5fa874/B3loader.js",
         dataUrl: "https://ucarecdn.com/943475a6-41ea-4508-8754-d428fd96c667/B3.data",
         frameworkUrl: "https://ucarecdn.com/e4ddfd85-19ae-4de4-91f0-3b5db7025091/B3framework.js",

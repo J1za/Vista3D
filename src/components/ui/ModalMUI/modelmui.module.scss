@@ -1,5 +1,15 @@
-.dialogTitle{
+.dialogTitle {
     display: flex;
     justify-content: flex-end;
     padding: 0;
+}
+
+//modal
+.MuiModal {
+    background: rgba(255, 255, 255, 0.57);
+    box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    max-width: 840px;
+    width: 95%;
+    padding: 15;
 }
