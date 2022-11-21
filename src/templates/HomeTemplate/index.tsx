@@ -23,7 +23,7 @@ export default function HomeTemplate() {
         if (user && user?.emailVerify) {
             Router.push('/model-generator')
         } else {
-            toggleModal();
+            toggleModal(true);
         }
     }
     const handleLogOut = () => logout();

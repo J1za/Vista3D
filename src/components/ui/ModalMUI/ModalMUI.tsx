@@ -8,7 +8,6 @@ import style from './modelmui.module.scss'
 
 interface ModalMUIProp {
     children?: React.ReactNode;
-    nameModal?: string;
 }
 
 const styleBox = {
@@ -23,11 +22,11 @@ const styleBox = {
     pt: 2
 };
 
-export function ModalMUI({ children, nameModal }: ModalMUIProp) {
+export function ModalMUI({ children }: ModalMUIProp) {
     const {
         loginModal: { showModal, toggleModal },
     }: any = useModal();
-    const handleClose = () => toggleModal();
+    const handleClose = () => toggleModal(false);
 
     return (
         <div>

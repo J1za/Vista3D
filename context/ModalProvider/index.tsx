@@ -10,7 +10,7 @@ const useModal = () => {
 }
 const ModalProvider = (props: any) => {
     const [showModal, setShowModal] = useState(false)
-    const toggleModal = () => setShowModal(!showModal)
+    const toggleModal = (bolean: boolean) => setShowModal(bolean)
     const modals = {
         loginModal: { showModal, toggleModal }
     }

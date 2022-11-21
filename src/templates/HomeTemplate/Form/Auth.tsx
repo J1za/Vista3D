@@ -31,10 +31,6 @@ export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user, loginWithGoogle } = useAuth();
 
-    const {
-        loginModal: { toggleModal },
-    }: any = useModal();
-
     const [showPassword, setshowPassword] = useState(false);
     const [createAccount, setCreateAccount] = useState(false);
     const [loadingButton, setLoadingButton] = useState(false);
