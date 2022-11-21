@@ -37,7 +37,7 @@ export default function AuthTemplate() {
             }, 2000);
         }
 
-    }, [])
+    }, [oobCode])
     const {
         loginModal: { showModal, toggleModal },
     }: any = useModal();
