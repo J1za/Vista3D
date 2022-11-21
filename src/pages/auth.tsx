@@ -8,7 +8,6 @@ function Auth() {
         <MainLayout>
             <Head>
                 <title>VISTA 3d models | Auth</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
             <AuthTemplate />
         </MainLayout>

@@ -1,13 +1,13 @@
-import 'src/assets/styles/globals.scss'
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import 'src/assets/styles/globals.scss'
+import 'react-toastify/dist/ReactToastify.css';
+import type { AppProps } from 'next/app'
 import { ModalProvider } from '../../context/ModalProvider'
 import { AuthContextProvider } from '../../context/AuthContext/AuthContext'
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import { createTheme, ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 
-function MyApp({ Component, pageProps, router }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const theme = createTheme({
     typography: {
       fontFamily: 'Belleza',
