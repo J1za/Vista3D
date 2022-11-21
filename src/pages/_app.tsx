@@ -5,14 +5,11 @@ import type { AppProps } from 'next/app'
 import { ModalProvider } from '../../context/ModalProvider'
 import { AuthContextProvider } from '../../context/AuthContext/AuthContext'
 import { ToastContainer } from 'react-toastify';
-import { createTheme, ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '../config/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const theme = createTheme({
-    typography: {
-      fontFamily: 'Belleza',
-    },
-  });
   return (
     <>
       <Head>
@@ -23,14 +20,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&family=Belleza&family=Italiana&display=swap" rel="stylesheet" />
       </Head>
       <AuthContextProvider>
+
         <ModalProvider>
           <ThemeProvider theme={theme}>
-            <StyledEngineProvider injectFirst>
-              <Component {...pageProps} />
-              <ToastContainer />
-            </StyledEngineProvider>
+            <CssBaseline />
+            <ToastContainer />
+            <Component {...pageProps} />
           </ThemeProvider>
         </ModalProvider>
+
       </AuthContextProvider>
     </>
   )

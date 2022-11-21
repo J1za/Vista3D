@@ -6,10 +6,9 @@ import { Typography } from '@mui/material';
 
 interface MainLayoutProps {
     children: React.ReactNode;
-    customSideBar?: React.ReactElement;
 }
 
-export default function MainLayout({ children, customSideBar }: MainLayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps) {
     const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1668087939/Final_video_odpzve.mp4';
     return (
         <div className={style.main}>

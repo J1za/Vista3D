@@ -79,54 +79,38 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.page-enter {
-  opacity: 0;
-  transform: scale(0.975);
-}
-.page-enter-active {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 300ms, transform 350ms;
-}
-
-.page-exit-active {
-  opacity: 0;
-  transform: scale(0.975);
-  transition: opacity 300ms, transform 350ms;
-}
-
 .ffHelvetica {
-  font-family: "HelveticaNeueCyr", sans-serif;
+  font-family: "HelveticaNeueCyr", sans-serif !important;
 }
 .MuiTextField-root input:-webkit-autofill,
 .MuiOutlinedInput-notchedOutline {
-  border-radius: 8px;
+  border-radius: 8px !important;
 }
 .MuiTextField-root input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 .MuiFormLabel-root {
-  font-family: "HelveticaNeueCyr", sans-serif;
-  font-weight: 100;
+  font-family: "HelveticaNeueCyr", sans-serif !important;
+  font-weight: 100 !important;
 }
 .MuiOutlinedInput-notchedOutline {
-  border: none;
+  border: none !important;
 }
 .MuiTextField-root {
-  background: #ffffff;
-  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  border: none;
+  background: #ffffff !important;
+  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 8px !important;
+  border: none !important;
   // .Mui-focused .MuiOutlinedInput-notchedOutline {
   //   border-color: rgb(68, 68, 68);
   // }
 }
 .MuiInputLabel-root.Mui-focused {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.6) !important;
 }
 .MuiInputBase-root {
   position: relative;
-  font-family: "HelveticaNeueCyr", sans-serif;
+  font-family: "HelveticaNeueCyr", sans-serif !important;
   &::before {
     position: absolute;
     content: "";

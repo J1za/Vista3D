@@ -186,7 +186,7 @@ export function Auth() {
                 <Grid container columnSpacing={2} rowSpacing={1.5}>
                     {createAccount &&
                         <>
-                            <Grid item xs={6}>
+                            <Grid item xs={12}  md={6} >
                                 <TextField
                                     label="Name"
                                     name="name"
@@ -198,7 +198,7 @@ export function Auth() {
                                     onChange={formik.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12}  md={6} >
                                 <TextField
                                     label="Surname"
                                     name="surname"
@@ -210,7 +210,7 @@ export function Auth() {
                                     onChange={formik.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12}  md={6} >
                                 <Autocomplete
                                     className='ffHelvetica'
                                     disablePortal
@@ -221,7 +221,7 @@ export function Auth() {
                                     onChange={(event, value) => (formik.setFieldValue("gender", value !== null && value))}
                                 />
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={12}  md={6} >
                                 <TextField
                                     label="Age"
                                     name="age"
@@ -243,7 +243,7 @@ export function Auth() {
                             </Grid>
                         </>
                     }
-                    <Grid item xs={createAccount ? 6 : 12}>
+                    <Grid item md={createAccount ? 6 : 12} xs={12}>
                         <TextField
                             label="Email"
                             name="email"
@@ -256,7 +256,7 @@ export function Auth() {
                         />
                     </Grid>
                     {createAccount &&
-                        <Grid item xs={6}>
+                        <Grid item xs={12}  md={6} >
                             <TextField
                                 color='info'
                                 label="Confirmation Email"
