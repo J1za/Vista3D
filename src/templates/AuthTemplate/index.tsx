@@ -26,18 +26,21 @@ export default function AuthTemplate() {
         });
     }
     useEffect(() => {
-        handleVerifyEmail(auth, oobCode);
-        setTimeout(() => {
-            push('/')
-        }, 2000);
-        toggleModal();
-    }, [oobCode])
+        if (oobCode == 'undefined') {
+            return push('/')
+        } else {
+            handleVerifyEmail(auth, oobCode);
+            toggleModal();
+            setTimeout(() => {
+                push('/')
+                toggleModal();
+            }, 2000);
+        }
+
+    }, [])
     const {
         loginModal: { showModal, toggleModal },
     }: any = useModal();
-    if (oobCode == 'undefined') {
-        return push('/')
-    }
     return (
         user?.emailVerify &&
         <ModalMUI>
