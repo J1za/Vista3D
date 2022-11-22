@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -23,10 +24,14 @@ const styleBox = {
 };
 
 export function ModalMUI({ children }: ModalMUIProp) {
+    const { replace }: any = useRouter();
     const {
         loginModal: { showModal, toggleModal },
     }: any = useModal();
-    const handleClose = () => toggleModal(false);
+    const handleClose = () => {
+        toggleModal(false)
+        replace('/', undefined, { shallow: true })
+    };
 
     return (
         <div>

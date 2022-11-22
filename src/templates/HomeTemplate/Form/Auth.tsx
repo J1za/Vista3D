@@ -30,7 +30,9 @@ const optionsGender = ['Female', 'Male', 'Other'];
 export function Auth() {
     const optionsCountry = useMemo(() => countryList().getData(), [])
     const { signup, login, upProfile, user, loginWithGoogle } = useAuth();
-
+    const {
+        loginModal: { showModal, toggleModal },
+    }: any = useModal();
     const [showPassword, setshowPassword] = useState(false);
     const [createAccount, setCreateAccount] = useState(false);
     const [loadingButton, setLoadingButton] = useState(false);
@@ -61,9 +63,8 @@ export function Auth() {
                 autoClose: 1000,
                 className: style.toast
             });
-            setTimeout(() => {
-                Router.push('/model-generator')
-            }, 500)
+            Router.push('/model-generator')
+            toggleModal(false);
         }
     }
     const getFormattedMessage = (reason: firebase.FirebaseError) => {
@@ -182,7 +183,7 @@ export function Auth() {
                 <Grid container columnSpacing={2} rowSpacing={1.5}>
                     {createAccount &&
                         <>
-                            <Grid item xs={12}  md={6} >
+                            <Grid item xs={12} md={6} >
                                 <TextField
                                     label="Name"
                                     name="name"
@@ -194,7 +195,7 @@ export function Auth() {
                                     onChange={formik.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}  md={6} >
+                            <Grid item xs={12} md={6} >
                                 <TextField
                                     label="Surname"
                                     name="surname"
@@ -206,7 +207,7 @@ export function Auth() {
                                     onChange={formik.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}  md={6} >
+                            <Grid item xs={12} md={6} >
                                 <Autocomplete
                                     className='ffHelvetica'
                                     disablePortal
@@ -217,7 +218,7 @@ export function Auth() {
                                     onChange={(event, value) => (formik.setFieldValue("gender", value !== null && value))}
                                 />
                             </Grid>
-                            <Grid item xs={12}  md={6} >
+                            <Grid item xs={12} md={6} >
                                 <TextField
                                     label="Age"
                                     name="age"
@@ -252,7 +253,7 @@ export function Auth() {
                         />
                     </Grid>
                     {createAccount &&
-                        <Grid item xs={12}  md={6} >
+                        <Grid item xs={12} md={6} >
                             <TextField
                                 color='info'
                                 label="Confirmation Email"

@@ -1,10 +1,12 @@
-.info {
-    display: inline-flex;
-    justify-content: center;
+.first {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
     &_generatore {
         font-size: 64px !important;
         line-height: 77px !important;
-        margin-bottom: auto;
         position: relative;
         @media screen and (max-width: 1639px) {
             font-size: 58px !important;
@@ -42,6 +44,122 @@
             &::before {
                 width: 0%;
             }
+        }
+    }
+    &_video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        z-index: -1;
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+.fourth,
+.third,
+.second {
+    padding: 234px 51px 0px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+    &_text {
+        flex-basis: 49%;
+        max-height: 650px;
+        overflow: auto;
+        h2 {
+            margin-bottom: 16px;
+        }
+    }
+    &_video {
+        flex-basis: 50%;
+        max-height: 650px;
+        position: relative;
+        z-index: 3;
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &_desc {
+        flex-basis: 100%;
+    }
+}
+.third {
+    justify-content: flex-start;
+    &_team {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        h2 {
+            margin-bottom: 16px;
+        }
+    }
+    &_text {
+        align-self: center;
+        display: grid;
+        max-width: 576px;
+        grid-row-gap: 20px;
+    }
+}
+.teams {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 600px;
+    width: 100%;
+    &_man {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &_name {
+        margin-top: 20px !important;
+        margin-bottom: -5px !important;
+    }
+}
+.fourth {
+    justify-content: space-evenly;
+    &_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-row-gap: 50px;
+    }
+    &_links {
+        display: flex;
+        align-items: center;
+        grid-column-gap: 89px;
+        a {
+            transition: 0.3s;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+        transition: 0.3s;
+        &:last-child {
+            margin: 0 32px;
+        }
+        &:hover {
+            transform: scale(1.05);
         }
     }
 }
