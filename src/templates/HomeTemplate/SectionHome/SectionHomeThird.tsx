@@ -33,6 +33,7 @@ export function SectionHomeThird() {
                     {mockTeams.map(({ url, name, position, id }) => (
                         <div key={id} className={style.teams_man}>
                             <Image
+                                priority={true}
                                 src={url}
                                 alt="user"
                                 objectFit='cover'

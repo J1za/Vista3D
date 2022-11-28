@@ -15,6 +15,7 @@ function SocialLink({ key, href, src, width, height, target }: SocialLinkI) {
         <Link key={key} href={href ? href : ''}>
             <a target={target ? target : '_blank'}>
                 <Image
+                    priority={true}
                     src={src ? src : ''}
                     alt="icon"
                     objectFit='contain'
