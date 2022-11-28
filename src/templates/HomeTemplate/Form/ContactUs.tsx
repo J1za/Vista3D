@@ -84,7 +84,7 @@ function Contactus() {
                 <Grid item xs={12}>
                     <TextField
                         className='contactField'
-                        label="Type your Message..."
+                        label="Give us your feedback"
                         name="text"
                         type="text"
                         fullWidth

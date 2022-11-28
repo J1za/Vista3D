@@ -5,7 +5,7 @@ export default async (req, res) => {
     try {
         const emailTest = await transporter.sendMail({
             from: process.env.NEXT_PUBLIC_SMTP_USER,
-            to: 'workinvs@gmail.com',
+            to: 'workinvs@gmail.com, officevista@pec.it',
             subject: `Contact form submission from ${email}`,
             html: `<p style="font-size: 25px; color: black; text-align: center">You have a new <strong style="color: cornflowerblue">Message</strong> from <strong>${name}</strong></p>
              <p style="font-size: 20px; color: black"> ${text ? text : 'Text empty'}</p>`

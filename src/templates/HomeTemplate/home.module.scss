@@ -99,9 +99,11 @@
     &_team {
         flex-basis: 50%;
         display: flex;
+        align-self: center;
         flex-direction: column;
         h2 {
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+            margin-left: 50px;
         }
     }
     &_text {

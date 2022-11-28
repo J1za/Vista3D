@@ -7,6 +7,10 @@ import SocialLink from '../SocialLink';
 import InstagramI from '../../../assets/images/icons/instagram.png'
 import EmailI from '../../../assets/images/icons/email.png'
 import userI from '../../../assets/images/userI.png'
+import user1 from '../../../assets/images/teams/Nicola Rossi.jpeg'
+import user2 from '../../../assets/images/teams/Giuseppe_Bertone.jpg'
+import user3 from '../../../assets/images/teams/Bohdan.png'
+import user4 from '../../../assets/images/teams/Apoorv_Katiyar.jpeg'
 
 import style from '../home.module.scss';
 
@@ -16,10 +20,10 @@ export function SectionHomeThird() {
         { src: EmailI.src, href: 'mailto:mail@mail.com', width: 51, height: 46, id: 2 }
     ]
     const mockTeams = [
-        { url: userI.src, name: 'NICOLA ENZO ROSSI', position: 'CEO & CFO', id: 1 },
-        { url: userI.src, name: 'GIUSEPPE BERTONE', position: 'Product Designer', id: 2 },
-        { url: userI.src, name: 'BOHDAN', position: 'CTO', id: 3 },
-        { url: userI.src, name: 'APOORV KATIYAR', position: 'Product Designer', id: 4 },
+        { url: user1.src, name: 'NICOLA ENZO ROSSI', position: 'CEO & CFO', id: 1 },
+        { url: user2.src, name: 'GIUSEPPE BERTONE', position: 'Product Designer', id: 2 },
+        { url: user3.src, name: 'BOHDAN', position: 'CTO', id: 3 },
+        { url: user4.src, name: 'APOORV KATIYAR', position: 'Product Designer', id: 4 },
     ]
     return (
         <div className={style.third}>
@@ -31,7 +35,7 @@ export function SectionHomeThird() {
                             <Image
                                 src={url}
                                 alt="user"
-                                objectFit='contain'
+                                objectFit='cover'
                                 width={140}
                                 height={140}
                             />
@@ -53,7 +57,6 @@ export function SectionHomeThird() {
                 </Typography>
             </div>
             <div className={style.links}>
-                <Typography className='descBottom'>“MAKE IT EASY FOR THEM, MAKE IT EASIER FOR YOU”</Typography>
                 {mockLinks.map(({ src, href, width, height, id }) => (
                     <SocialLink src={src} href={href} width={width} height={height} key={id} />
                 ))}

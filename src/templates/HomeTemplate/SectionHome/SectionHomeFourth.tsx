@@ -10,9 +10,9 @@ import style from '../home.module.scss';
 
 export function SectionHomeFourth() {
     const mockLinks = [
-        { src: InstagramI.src, href: 'https://www.instagram.com', width: 87, height: 87, id: 1 },
-        { src: LinkedinI.src, href: 'https://www.linkedin.com', width: 87, height: 87, id: 2 },
-        { src: EmailI.src, href: 'mailto:mail@mail.com', width: 100, height: 87, id: 3 }
+        { src: InstagramI.src, href: 'https://www.instagram.com/vista_metahuman/?igshid=YmMyMTA2M2Y%3D', width: 87, height: 87, id: 1 },
+        { src: LinkedinI.src, href: 'https://www.linkedin.com/in/vista-s-r-l/', width: 87, height: 87, id: 2 },
+        { src: EmailI.src, href: 'mailto:officevista@pec.it', width: 100, height: 87, id: 3 }
     ]
     return (
         <div className={style.fourth}>
