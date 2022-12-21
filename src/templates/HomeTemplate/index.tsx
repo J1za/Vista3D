@@ -15,6 +15,7 @@ export default function HomeTemplate() {
         <ReactFullpage
             anchors={anchors}
             navigation
+            scrollingSpeed={400}
             pluginWrapper={pluginWrapper}
             render={({ state, fullpageApi }) => (
                 <ReactFullpage.Wrapper>
