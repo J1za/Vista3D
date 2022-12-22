@@ -6,10 +6,10 @@ import Router from 'next/router'
 
 export default function UnityGame() {
     const { unityProvider, UNSAFE__detachAndUnloadImmediate: detachAndUnloadImmediate, loadingProgression, isLoaded, addEventListener, removeEventListener } = useUnityContext({
-        loaderUrl: "https://ucarecdn.com/d0cb0340-d323-405f-9d61-4dabc859c76a/Buildloader.js",
-        dataUrl: "https://ucarecdn.com/994e9e28-1c4b-491e-9ded-fc9b3a49bb85/Build.data",
-        frameworkUrl: "https://ucarecdn.com/4a9ab156-1303-4a8c-9c31-06385292d74c/Buildframework.js",
-        codeUrl: "https://ucarecdn.com/c4a09c78-a4ed-4b87-b854-16df299c15c3/Build.wasm",
+        loaderUrl: "https://ucarecdn.com/87f611e0-1cbe-48d5-bde0-79ccf22c75f1/Configuratorloader.js",
+        dataUrl: "https://ucarecdn.com/1b0b3270-7d6b-4c21-ab74-eb0a7bffe03c/Configurator.data",
+        frameworkUrl: "https://ucarecdn.com/ddd6d5af-cbde-4d19-ac5c-4376c8c2d306/Configuratorframework.js",
+        codeUrl: "https://ucarecdn.com/1d08f1b2-363b-4435-bf52-85edd1b23c67/Configurator.wasm",
     });
     const canvasRef = useRef(null);
     const handleSetScore = useCallback(() => {
