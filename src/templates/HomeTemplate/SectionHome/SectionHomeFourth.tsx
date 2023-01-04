@@ -15,9 +15,9 @@ export function SectionHomeFourth() {
         { src: EmailI.src, href: 'mailto:officevista@pec.it', width: 100, height: 87, id: 3 }
     ]
     return (
-        <div className={style.fourth}>
+        <div className={style.fourth} style={{ position: 'relative' }}>
+            <Typography variant='h3' style={{ position: 'absolute', top: 160, left: 330 }} className='ffHelvetica' fontWeight={500}>/ Contact Us</Typography>
             <div className={style.fourth_form}>
-                <Typography variant='h2'>CONTACT US</Typography>
                 <Contactus />
             </div>
             <div className={style.fourth_links}>

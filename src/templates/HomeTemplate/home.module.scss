@@ -80,8 +80,10 @@
         }
     }
     &_video {
-        flex-basis: 50%;
-        max-height: 650px;
+        margin-top: -234px;
+        margin-right: -51px;
+        flex-basis: 70%;
+        height: 100vh;
         position: relative;
         z-index: 3;
         video {
@@ -92,6 +94,17 @@
     }
     &_desc {
         flex-basis: 100%;
+    }
+}
+.second {
+    align-items: center;
+    overflow-y: hidden;
+    &_text {
+        flex-basis: 28%;
+        max-width: 594px;
+        text-align: justify;
+        display: grid;
+        gap: 30px;
     }
 }
 .third {
@@ -109,8 +122,9 @@
     &_text {
         align-self: center;
         display: grid;
-        max-width: 576px;
-        grid-row-gap: 20px;
+        text-align: justify;
+        max-width: 636px;
+        grid-row-gap: 25px;
     }
 }
 .teams {
@@ -153,8 +167,9 @@
 .links {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    padding-bottom: 35px;
     a {
         transition: 0.3s;
         &:last-child {

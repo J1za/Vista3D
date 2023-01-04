@@ -39,7 +39,7 @@ export function SectionHomeFirst() {
                     <source src={urlVideo} type="video/mp4" />
                 </video>
             </div>
-            <Button style={{marginBottom: '250px'}}>
+            <Button>
                 <Button variant="outlined" style={{ borderWidth: 0, borderColor: 'orange', display: 'grid' }}>
                     {!showModal &&
                         <>

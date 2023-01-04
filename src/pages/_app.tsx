@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { ModalProvider } from '../../context/ModalProvider'
 import { AuthContextProvider } from '../../context/AuthContext/AuthContext'
 import { ToastContainer } from 'react-toastify';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../config/theme';
 

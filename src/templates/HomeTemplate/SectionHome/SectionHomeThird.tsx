@@ -26,9 +26,9 @@ export function SectionHomeThird() {
         { url: user4.src, name: 'APOORV KATIYAR', position: 'Product Designer', id: 4 },
     ]
     return (
-        <div className={style.third}>
+        <div className={style.third} style={{ position: 'relative' }}>
+            <Typography variant='h3' style={{ position: 'absolute', top: 160, left: 330 }} className='ffHelvetica' fontWeight={500}>/ Team</Typography>
             <div className={style.third_team}>
-                <Typography variant='h2'>TEAM</Typography>
                 <div className={style.teams}>
                     {mockTeams.map(({ url, name, position, id }) => (
                         <div key={id} className={style.teams_man}>
@@ -48,16 +48,17 @@ export function SectionHomeThird() {
             </div>
             <div className={style.third_text}>
                 <Typography variant='h5' className='ffHelvetica'>
-                    Vista has as its objective the pre-visualization of products in the field of fashion.
+                    The Fashion E-Commerce sector is affected by several problems, among the latter, we discovered that the average return of online purchased clothes surpasses the 30% mark, compared to an 8.89% return once the clothes are purchased directly at the physical store.
                 </Typography>
                 <Typography variant='h5' className='ffHelvetica'>
-                    With our proposal we deem to revolutionise service for the fashion sector, we have incorporated a 3D configurator into the website that allows you to recreate your own features and have an unlimited potential wardrobe where you can choose the best clothes for yourself.
+                    Customers have shown to lack disposable time when it comes to being physically present in a store; and finally, the last alarming problem relates to the pollution created because of unused and unnecessary manufactured clothes.
                 </Typography>
                 <Typography variant='h5' className='ffHelvetica'>
-                    That means you no longer have to go to stores to try the clothes to buy them online.
+                    VISTA addresses these problems and provides for a practical and effective solution for the end user.
                 </Typography>
             </div>
             <div className={style.links}>
+                <Typography className='descBottom' padding={0}>“MAKE IT EASY FOR THEM, MAKE IT EASIER FOR YOU”</Typography>
                 {mockLinks.map(({ src, href, width, height, id }) => (
                     <SocialLink src={src} href={href} width={width} height={height} key={id} />
                 ))}

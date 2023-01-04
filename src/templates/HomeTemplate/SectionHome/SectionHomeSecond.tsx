@@ -11,18 +11,23 @@ export function SectionHomeSecond() {
         { src: EmailI.src, href: 'mailto:officevista@pec.it', width: 51, height: 46, id: 2 }
     ]
     return (
-        <div className={style.second}>
+        <div className={style.second} style={{ position: 'relative' }}>
+            <Typography variant='h3' style={{ position: 'absolute', top: 160, left: 330 }} className='ffHelvetica' fontWeight={500}>/ Our Vision</Typography>
             <div className={style.second_text}>
-                <Typography variant='h2' textAlign='center'>What is VISTA?</Typography>
-                <Typography variant='h5' className='ffHelvetica'>VISTA is a sophisticated tech business operating in the Fashion Industry by serving multiple Fashion Brand companies via the use of 3D Modelling technologies. The business intends to ameliorate the overall decision-making process of consumers in the Online Shopping environment and the service rendered by these Fashion Brands. VISTA is aiming at solving several problems affecting Fashion E-Commerce, among the latter we discovered that the average return of online purchased clothes surpasses the 30% mark, compared to an 8.89% return once the clothes are purchased directly at the physical store; Customers have shown to lack disposable time when it comes to being physically present in a store; The final alarming problem relates to the pollution created because of unused and unnecessary manufactured clothes. Therefore, VISTA, as a high-tech service company will target the latter problems with the intent of meeting the customers’ needs and wants; to do so, the partners came up with a service that enables the customers to create their own 3D Avatar in real-time to visualize any piece of apparel of the fashion brands partnered with VISTA on themselves.</Typography>
+                <Typography variant='h5' className='ffHelvetica'>VISTA is a sophisticated tech business operating in the Fashion Industry by serving multiple Fashion Brand companies via the use of 3D Modelling technologies.</Typography>
+                <Typography variant='h5' className='ffHelvetica'>
+                    The business intends to ameliorate the overall decision-making process of consumers in the Online Shopping environment and the service rendered by these Fashion Brands.
+                </Typography>
+                <Typography variant='h5' className='ffHelvetica'>
+                    Nicola Enzo Rossi and Giuseppe Bertone, VISTA’s partners, came up with a service that enables the customers to create their own 3D avatars in real-time to visualize any piece of apparel of the fashion brands partnered with VISTA on themselves.
+                </Typography>
             </div>
             <div className={style.second_video}>
                 <video autoPlay data-autoplay loop muted playsInline={true}>
                     <source src={urlVideo} type="video/mp4" />
                 </video>
             </div>
-            <div className={style.links}>
-                <Typography className='descBottom'>“MAKE IT EASY FOR THEM, MAKE IT EASIER FOR YOU”</Typography>
+            <div className={style.links} style={{ justifyContent: 'flex-end', position: 'absolute', bottom: 0, right: 45, zIndex: 4 }}>
                 {mockLinks.map(({ src, href, width, height, id }) => (
                     <SocialLink src={src} href={href} width={width} height={height} key={id} />
                 ))}
