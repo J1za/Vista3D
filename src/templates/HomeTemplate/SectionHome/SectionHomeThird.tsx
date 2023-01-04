@@ -16,7 +16,7 @@ import style from '../home.module.scss';
 
 export function SectionHomeThird() {
     const mockLinks = [
-        { src: InstagramI.src, href: 'https://www.instagram.com/vista_metahuman/?igshid=YmMyMTA2M2Y%3D', width: 48, height: 48, id: 1 },
+        { src: InstagramI.src, href: 'https://www.instagram.com/official_vista_office/', width: 48, height: 48, id: 1 },
         { src: EmailI.src, href: 'mailto:mail@mail.com', width: 51, height: 46, id: 2 }
     ]
     const mockTeams = [

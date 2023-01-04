@@ -7,7 +7,7 @@ import EmailI from '../../../assets/images/icons/email.png'
 export function SectionHomeSecond() {
     const urlVideo = 'https://res.cloudinary.com/dnv8xvjrt/video/upload/v1668087939/Final_video_odpzve.mp4';
     const mockLinks = [
-        { src: InstagramI.src, href: 'https://www.instagram.com/vista_metahuman/?igshid=YmMyMTA2M2Y%3D', width: 48, height: 48, id: 1 },
+        { src: InstagramI.src, href: 'https://www.instagram.com/official_vista_office/', width: 48, height: 48, id: 1 },
         { src: EmailI.src, href: 'mailto:officevista@pec.it', width: 51, height: 46, id: 2 }
     ]
     return (
